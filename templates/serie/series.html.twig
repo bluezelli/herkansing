@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Year</th>
+                        <th scope="col">duration</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for serie in series %}
+                        <tr>
+                            <td>{{ serie.title }}</td>
+                            <td>{{ serie.description }}</td>
+                            <td>{{ serie.year }}</td>
+{#                            <td>{{ serie.episodes }}</td>#}
+                        </tr>
+
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+        <div class="col-md-2">
+            <a href="{{ path('home') }}" class="btn btn-primary">Back</a>
+        </div>
+    </div>
+
+
+
+
+{% endblock %}

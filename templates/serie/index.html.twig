@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <table class="table">
+
+                    <thead>
+                    <tr>
+                        <th scope="col">Number</th>
+                        <th scope="col">title</th>
+                        <th scope="col"></th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for genre in genres %}
+
+                        <tr>
+                            <td>
+                                {{ genre.id }}
+                            </td>
+                            <td>{{ genre.name }}</td>
+                            <td>
+                                <a class="btn btn-warning" href="{{ path('serie', {id: genre.id}) }}">Go</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+{#               #}
+            </div>
+
+            <a href="{{ path('insert', {id: genre.id}) }}" class="btn btn-primary">new Ganre</a>
+        </div>
+    </div>
+
+{% endblock %}
