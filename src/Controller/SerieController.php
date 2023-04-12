@@ -4,10 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Genre;
 use App\Entity\Serie;
+use App\Form\GenreType;
 use App\Repository\EpisodeRepository;
 use App\Repository\GenreRepository;
 use App\Repository\SerieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\BrowserKit\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -35,7 +37,18 @@ class SerieController extends AbstractController
     }
 
     #[Route('/insert{id}', name: 'insert')]
-    public function insert(){
+    public function insert(Request $request)
+    {
+        $genre = new Genre();
+        $form = $this->createForm(GenreType::class, $genre);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
 
-    }
-}
+            $genre = $form->getData();
+
+
+        }
+        return $this->render('serie/addgenre.html.twig', [
+            'form' => $form,
+        ]);
+    }}
