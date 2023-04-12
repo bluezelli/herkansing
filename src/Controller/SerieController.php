@@ -25,6 +25,7 @@ class SerieController extends AbstractController
     #[Route('/serie/{id}', name: 'serie')]
     public function serie(Genre $genre, SerieRepository $serieRepository): Response
     {
+        //de id in de Route haalt de id op uit de url dat mee is gegeven via de path. in de path is de genre id meegegeven.
         $series = $serieRepository->findBy(['genre' => $genre]);
         return $this->render('serie/series.html.twig', ['series' => $series]);
     }
@@ -37,16 +38,17 @@ class SerieController extends AbstractController
     }
 
     #[Route('/insert{id}', name: 'insert')]
-    public function insert(Request $request)
+    public function insert(Request $request , GenreRepository $genreRepository)
     {
         $genre = new Genre();
         $form = $this->createForm(GenreType::class, $genre);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $genre = $form->getData();
+                $genre = $form->getData();
+                $genreRepository->save($genre);
 
-
+            return $this->redirectToRoute('task_success');
         }
         return $this->render('serie/addgenre.html.twig', [
             'form' => $form,
