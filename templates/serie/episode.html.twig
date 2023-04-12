@@ -8,22 +8,22 @@
 
                     <thead>
                     <tr>
-                        <th scope="col">Number</th>
+                        <th scope="col">Season</th>
+                        <th scope="col">part</th>
                         <th scope="col">title</th>
-                        <th scope="col"></th>
 
                     </tr>
                     </thead>
                     <tbody>
-                    {% for genre in genres %}
+                    {% for episode in episodes %}
 
                         <tr>
                             <td>
-                                {{ genre.id }}
+                                {{ episode.season }}
                             </td>
-                            <td>{{ genre.name }}</td>
+                            <td>{{ episode.part }}</td>
                             <td>
-                                <a class="btn btn-warning" href="{{ path('serie', {id: genre.id}) }}">Go</a>
+{#                                {{ episode.title }}#}
                             </td>
                         </tr>
                     {% endfor %}
@@ -31,8 +31,8 @@
                 </table>
 
             </div>
-{#<a class="btn btn-danger" href="{{ path('home') }}">Back</a>#}
-{#            <a href="{{ path('insert', {id: genre.id}) }}" class="btn btn-primary">new Ganre</a>#}
+            <a class="btn btn-danger" href="{{ path('home') }}">Back</a>
+            {#            <a href="{{ path('insert', {id: genre.id}) }}" class="btn btn-primary">new Ganre</a>#}
         </div>
     </div>
 

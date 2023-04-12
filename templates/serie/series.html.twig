@@ -21,6 +21,9 @@
                             <td>{{ serie.description }}</td>
                             <td>{{ serie.year }}</td>
 {#                            <td>{{ serie.episodes }}</td>#}
+                            <td>
+                                <a class="btn btn-warning" href="{{ path('episode', {id: serie.id}) }}">go</a>
+                            </td>
                         </tr>
 
                     {% endfor %}
